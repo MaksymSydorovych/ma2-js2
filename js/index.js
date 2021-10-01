@@ -1,36 +1,35 @@
-import  books  from "./data/books.js";
+import books from "./data/books.js";
+const container = document.querySelector(".books");
 let listItems = books;
+createList(listItems);
+function createList(books) {
+  if (books.length > 0) {
+	container.innerHTML = "";
+    books.forEach((book) => {
+      container.innerHTML += `<li class="list"><span>${book.title}</span>
+		<i class="fas fa-trash" data-id="${book.isbn}"></i>
+		</li>`;
+    });
+  } else {
+	container.innerHTML = `<li class="message">Book list empty</li>`;
+  }
 
-const container = document.querySelector("ul")
-listItems.forEach(item => {
-	container.innerHTML += `
-	<li>
-	<h4>${item.isbn}</h4>
-	<p>${item.title}</p>
-	<i class="fas fa-trash" data-item="${item}"></i>
-	</li>`	
-}
-);
-
-const treshCan = document.querySelectorAll("li i");
-treshCan.forEach(function(can){
-	can.addEventListener("click", removeFromList);
-}
-);
-
-function removeFromList(){
-	
-	const deleteThisItem = event.target.dataset.item;
-	console.log(deleteThisItem);
-	const newList = listItems.filter(function(item) {
-		
-		console.log(item);
-		if(deleteThisItem !== item) {
-		return true;
-		}
-   	})
-	listItems = newList;
-	
-	
+  const treshCan = document.querySelectorAll("li i");
+  treshCan.forEach((can) => {
+    can.addEventListener("click", click);
+  });
 }
 
+function click(event) {
+  const id = event.target.dataset.id;
+  const newList = remove(listItems, id);
+  listItems = newList;
+  createList(listItems);
+}
+function remove(books, id) {
+  const filter = books.filter(
+    (book) => parseInt(id) !== parseInt(book.isbn)
+  );
+
+  return filter;
+}

@@ -1,4 +1,4 @@
- let books = [
+ const books = [
 	{
 		 isbn: "1600506460320",
 		 title: "Great book",
