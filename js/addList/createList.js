@@ -1,9 +1,7 @@
 import remove from "./deleteList.js";
-
-
-
+import {saveToStorage } from "./storage.js";
+import { listKey } from "./setting.js";
 function createList(listItems){
-	
 	const addList = document.querySelector(".add__list")
 	addList.innerHTML ="";
 	listItems.forEach((item) => {
@@ -11,18 +9,17 @@ function createList(listItems){
 		<i class="fas fa-trash" data-list="${item}"></i>
 		</li>`
 	}
-	
 	);
-	const treshCan = document.querySelectorAll("li i");
+	const treshCan = document.querySelectorAll(".list");
   treshCan.forEach((can) => {
-    can.addEventListener("click", click);
+    can.addEventListener("click", handleClick);
   })
-  function click(event) {
+  function handleClick(event) {
 	const list = event.target.dataset.list;
 	const newList = remove(listItems, list);
+	saveToStorage(listKey, newList);
 	listItems = newList;
 	createList(listItems);
  }
 }
-
 export default createList;

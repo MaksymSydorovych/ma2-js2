@@ -2,9 +2,13 @@ body {
   margin: 0 auto;
   padding: 0 auto;
   text-align: center;
+  background: rgb(235, 235, 229);
 }
 ul li {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 23px;
 }
 ul {
   display: flex;
@@ -13,14 +17,31 @@ ul {
 }
 .list {
   border: 1px solid black;
+  border-radius: 10px;
   width: 300px;
-  background: rgb(241, 206, 193);
+  background: rgb(250, 250, 246);
   padding: 15px;
+  margin: 2px;
 }
 .message {
   color: red;
   font-size: 40px;
 }
 i {
+  cursor: pointer;
+}
+input {
+  font-size: 22px;
+  margin-right: 16px;
+}
+.add {
+  margin-left: 70px;
+}
+button {
+  background: rgb(253, 255, 253);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 40px;
   cursor: pointer;
 }

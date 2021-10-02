@@ -1,4 +1,3 @@
-import createList from "./createList.js";
 function remove(listItems, list) {
 	const filter = listItems.filter(
 	  (item) => (list) !== (item)
